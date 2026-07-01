@@ -1,5 +1,7 @@
 # NASA IMS Bearing RUL Prediction Pipeline
 
+🔗 Live demo: https://bearing-gold-phi.vercel.app/
+
 Predicts the Remaining Useful Life (RUL) of rolling-element bearings using the
 NASA IMS Bearing Dataset.  The pipeline combines Fractional Synchrosqueezed
 Transform (FrSST) time-frequency analysis, physics-informed fault-frequency
