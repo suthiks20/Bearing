@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+data/raw/
+dashboard/frontend/node_modules/
+dashboard/backend/__pycache__/
+*.pth
+results/metrics/peak_features.csv
+results/metrics/peak_features_augmented.csv

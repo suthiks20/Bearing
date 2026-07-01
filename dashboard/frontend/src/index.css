@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base-950 text-slate-200 font-sans antialiased m-0;
+    background-image: radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.06), transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.05), transparent 45%);
+  }
+
+  ::selection {
+    @apply bg-healthy/30 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-base-950;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-base-700 rounded-full;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md shadow-glass;
+  }
+
+  .tabular-num {
+    font-variant-numeric: tabular-nums;
+  }
+}
