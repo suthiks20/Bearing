@@ -75,7 +75,7 @@ function RollerRow({ zOffset }: { zOffset: number }) {
   return (
     <group>
       <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, zOffset]}>
-        <torusGeometry args={[ROLLER_ORBIT_RADIUS, 0.05, 8, 64]} />
+        <torusGeometry args={[ROLLER_ORBIT_RADIUS, 0.05, 16, 96]} />
         <meshStandardMaterial color="#3f4654" metalness={0.6} roughness={0.5} />
       </mesh>
       {positions.map((pos, i) => (
@@ -148,11 +148,10 @@ export default function BearingModel3D({
   return (
     <div className={className}>
       <Canvas
-        shadows
-        camera={{ position: [5, 3.2, 6], fov: 42 }}
-        gl={{ antialias: true }}
+        shadows={{ type: THREE.PCFShadowMap }}
+        camera={{ position: [5, 3.2, 6], fov: 52 }}
+        gl={{ antialias: true, alpha: true }}
       >
-        <color attach="background" args={['#0a0a0f']} />
         <ambientLight intensity={0.18} />
         {/* key light */}
         <directionalLight
@@ -178,7 +177,7 @@ export default function BearingModel3D({
           <OrbitControls
             enableDamping
             dampingFactor={0.08}
-            minDistance={4}
+            minDistance={7}
             maxDistance={14}
             autoRotate={false}
           />

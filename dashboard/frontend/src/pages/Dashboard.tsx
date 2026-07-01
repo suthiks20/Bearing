@@ -119,11 +119,8 @@ export default function Dashboard() {
         bpfoIntensity={bpfoIntensity}
         bpfiIntensity={bpfiIntensity}
         severity={severity}
-      >
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 space-y-6">
-          {!hiData && <LoadingOverlay />}
-          {/* FileScrubber */}
-          {hiData && (
+        heroSlot={
+          hiData ? (
             <FileScrubber
               files={hiData.files}
               healthIndex={hiData.hi_proxy}
@@ -132,10 +129,10 @@ export default function Dashboard() {
               value={currentIdx}
               onChange={handleScrub}
             />
-          )}
-
-          {/* Stat cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          ) : undefined
+        }
+        heroStats={
+          <>
             <StatCard
               label="RUL Estimate"
               value={rul}
@@ -143,7 +140,7 @@ export default function Dashboard() {
               decimals={1}
               accent={rulStage}
               icon={<Clock size={16} />}
-              sublabel={`file ${currentIdx} / ${(rulData?.max_life ?? 983)}`}
+              sublabel={`file ${currentIdx} / ${rulData?.max_life ?? 983}`}
             />
             <StatCard
               label="Health Index"
@@ -165,7 +162,11 @@ export default function Dashboard() {
               icon={<Zap size={16} />}
               sublabel={fileDetail?.dominant_fault_label ?? '—'}
             />
-          </div>
+          </>
+        }
+      >
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 space-y-6">
+          {!hiData && <LoadingOverlay />}
 
           {/* Charts row */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
